@@ -28,12 +28,12 @@ public class MainPageListService {
 
         List<BoardListDto> boardListDtos = boardsSlice.getContent().stream()
                 .map(board -> {
-                    return  BoardListDto.builder()
-                            .boardId(board.getBoardId())
-                            .title(board.getTitle())
-                            .content(board.getContent())
-                            .createdAt(board.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build();
+                    return BoardListDto.builder()
+                .boardId(board.getBoardId())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .createdAt(board.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
+                .build();
                 })
                 .collect(Collectors.toList());
 

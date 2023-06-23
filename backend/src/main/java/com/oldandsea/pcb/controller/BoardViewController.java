@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BoardViewController {
 
-    @GetMapping("/boards")
+    @GetMapping("/main")
     public String getBoardListPage() {
         return "board";
     }

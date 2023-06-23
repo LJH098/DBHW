@@ -14,7 +14,7 @@ public class BoardAPIController {
 
     private final MainPageListService mainPageListService;
 
-    @GetMapping("/api/boards")
+    @GetMapping("/api/main")
     public Slice<BoardListDto> getBoardList(
             @RequestParam(value = "lastBoardId", required = false) Long lastBoardId,
             @RequestParam(value = "limit",defaultValue = "10") int size) {
