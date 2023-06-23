@@ -1,4 +1,4 @@
-let lastBoardId = 0;
+let lastBoardId = null;
 const limit = 8; // 한 번에 가져올 게시글 수
 const boardsContainer = document.querySelector('#boardsContainer');
 
@@ -6,7 +6,7 @@ function getBoards() {
     fetch(`/api/boards?lastBoardId=${lastBoardId}&limit=${limit}`)
         .then(response => response.json())
         .then(data => {
-            data.forEach(board => {
+            data.content.forEach(board => {
                 let boardItem = document.createElement('div');
                 boardItem.className = 'boardItem';
 
