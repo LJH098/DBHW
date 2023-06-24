@@ -1,6 +1,7 @@
 package com.oldandsea.pcb.domain.dto;
 
 import com.oldandsea.pcb.domain.entity.Comment;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.ZoneOffset;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommentDto {
 
         private Long commentId;

@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class BoardViewController {
+public class MainViewController {
 
     @GetMapping("/main")
     public String getBoardListPage() {
-        return "board";
+        return "main";
     }
 }
 

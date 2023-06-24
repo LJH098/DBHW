@@ -1,8 +1,6 @@
 const inputId = document.querySelector(".input-id");
 const inputPw = document.querySelector(".input-pw");
-const inputPwr = document.querySelector(".input-pwrepeat");
-const inputEmail = document.querySelector(".input-email");
-const inputSemester = document.querySelector(".input-semester");
+const inputNick = document.querySelector(".nickname");
 const inputForm = document.querySelector(".input-form");
 //공백검사
 function inputIsEmpty(inputElement, invalideCheckElement) {
@@ -26,46 +24,79 @@ function inputPwAlert(event) {
     inputIsEmpty(inputPw, pwInvalidCheck, () => inputPw.value === "");
 }
 
-function inputPwrAlert(event) {
+function inputNickAlert(event) {
     const pwrInvalidCheck = document.querySelector(".pwr-invalid-check");
-    inputIsEmpty(inputPwr, pwrInvalidCheck, () => inputPwr.value === "");
+    inputIsEmpty(inputNick, pwrInvalidCheck, () => inputNick.value === "");
 }
 
-function inputEmailAlert(event) {
-    const emailInvalidCheck = document.querySelector(".email-invalid-check");
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (inputEmail.value == "") {
-        event.preventDefault();
-        inputEmail.classList.add("input-alert");
-        emailInvalidCheck.classList.add("invalid-visible");
-    } else if (!emailRegex.test(inputEmail.value)) {
-        event.preventDefault();
-        inputEmail.classList.add("input-alert");
-        emailInvalidCheck.classList.add("invalid-visible");
-        emailInvalidCheck.innerHTML = "PLEASE CHECK YOUR EMAIL";
-    } else if (inputEmail.value !== "") {
-        inputEmail.classList.remove("input-alert");
-        emailInvalidCheck.classList.remove("invalid-visible");
-    }
-}
-
-function inputSemesterAlert(event) {
-    const semesterInvalidCheck = document.querySelector(
-        ".semester-invalid-check"
-    );
-    inputIsEmpty(
-        inputSemester,
-        semesterInvalidCheck,
-        () => inputSemester.value === ""
-    );
-}
-
-inputForm.addEventListener("submit", inputIdAlert);
-inputForm.addEventListener("submit", inputPwAlert);
-inputForm.addEventListener("submit", inputPwrAlert);
-inputForm.addEventListener("submit", inputEmailAlert);
-inputForm.addEventListener("submit", inputSemesterAlert);
+// inputForm.addEventListener("submit", inputIdAlert);
+// inputForm.addEventListener("submit", inputPwAlert);
+// inputForm.addEventListener("submit", inputNickAlert);
 
 function goNewPage(newHref = "") {
     window.location.href = newHref;
 }
+
+inputForm.addEventListener("submit",goLogin);
+
+function goLogin(e) {
+    e.preventDefault();
+
+    const identification = document.querySelector(".input-id").value;
+    const pwd = document.querySelector(".input-pw").value;
+    const nickname = document.querySelector(".nickname").value;
+
+    const payload = `{"identification":"${identification}","pwd":"${pwd}","nickname":"${nickname}"}`;
+
+    fetch("/users/create", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain;charset=UTF-8'
+        },
+        body: payload
+    })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+        });
+}
+
+// function goLogin(e){
+//     e.preventDefault();
+//     // const data={
+//     //   identification:'ddori',
+//     //   pwd:'0299',
+//     //   nickname:'nicknick'
+//     // }
+//
+//     const formData = new FormData();
+//     formData.append('identification', document.querySelector(".input-id").value);
+//     formData.append('pwd', document.querySelector(".input-pw").value);
+//     formData.append('nickname', document.querySelector(".nickname").value)
+//
+//     // const id= document.querySelector(".input-id").value;
+//     // const inputpwd= document.querySelector(".input-pw").value;
+//     // const nickname= document.querySelector(".nickname").value;
+//     // const memberDto = {
+//     //   identification: id,
+//     //   pwd: inputpwd,
+//     //   nickname: nickname
+//     // };
+//
+//     // const formData = new FormData(memberDto);
+//
+//     // console.log(memberDto);
+//
+//     fetch("/users/create", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'text/plain;charset=UTF-8'
+//         },
+//         body: formData
+//     })
+//         .then(res => res.json())
+//         .then((result)=>{
+//             console.log(result);
+//         })
+//
+// }

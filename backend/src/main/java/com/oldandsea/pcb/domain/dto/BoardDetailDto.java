@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardDetailDto {
     private Long boardId;
     private String title;

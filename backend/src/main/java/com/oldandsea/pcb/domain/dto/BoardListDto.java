@@ -1,6 +1,7 @@
 package com.oldandsea.pcb.domain.dto;
 
 import com.oldandsea.pcb.domain.entity.Board;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardListDto {
     private Long boardId;
     private String title;
@@ -34,12 +35,4 @@ public class BoardListDto {
         this.boardTagList = boardTagList;
     }
 }
-//    public static BoardListDto toEntity(Board board) {
-//        return BoardListDto.builder()
-//                .boardId(board.getBoardId())
-//                .title(board.getTitle())
-//                .content(board.getContent())
-//                .createdAt(board.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
-//                .build();
-//    }
-//}
+

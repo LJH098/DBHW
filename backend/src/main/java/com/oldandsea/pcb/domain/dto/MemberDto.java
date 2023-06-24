@@ -1,6 +1,8 @@
 package com.oldandsea.pcb.domain.dto;
 
 
+import com.oldandsea.pcb.domain.entity.Member;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberDto {
     private Long memberId;
 
@@ -25,5 +27,11 @@ public class MemberDto {
         this.pwd = pwd;
         this.nickname = nickname;
     }
-
+    public Member toEntity() {
+        return Member.builder()
+                .identification(identification)
+                .pwd(pwd)
+                .nickname(nickname)
+                .build();
+    }
 }
