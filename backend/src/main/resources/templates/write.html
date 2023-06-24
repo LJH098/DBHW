@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/write.css" />
+    <title>pcb-write</title>
+  </head>
+  <body>
+    <nav>
+      <span class="logo">PCB</span>
+      <span class="logout">로그아웃</span>
+    </nav>
+    <form>
+      <div class="container">
+        <h1>글 작성</h1>
+        <div class="title">
+          제목<br />
+          <input type="text" name="title" />
+        </div>
+        <div class="content">
+          내용<br />
+          <textarea rows="{large" ? 5 : 1}></textarea>
+        </div>
+        <div class="tag">
+          태그<br />
+          <input type="text" name="tag" />
+        </div>
+        <div class="writebtn">
+          <button type="submit">작성하기</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

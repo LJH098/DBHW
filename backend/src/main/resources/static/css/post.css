@@ -1,0 +1,72 @@
+nav {
+  padding-left: 70px;
+  padding-right: 70px;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+.logo {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 80px;
+  cursor: pointer;
+}
+.logout {
+  float: right;
+  color: gray;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container div {
+  margin-bottom: 20px;
+}
+
+.content {
+  margin-top: 40px;
+}
+.tag {
+  color: rgb(49, 49, 255);
+}
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+.writer {
+  font-size: 13px;
+}
+.writebtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+button {
+  all: unset;
+  padding: 10px;
+  font-weight: bold;
+  color: gray;
+  font-size: 15px;
+  width: 340px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: rgb(220, 220, 220);
+  cursor: pointer;
+}
+
+.container {
+  font-size: 15px;
+  color: gray;
+  width: 600px;
+}
+
+button:hover {
+  color: white;
+  background-color: rgb(48, 48, 255);
+}
