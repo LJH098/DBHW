@@ -1,6 +1,46 @@
 let lastBoardId = "";
-const limit = 8; // 한 번에 가져올 게시글 수
+const limit = 10; // number of posts to fetch at one time
 const boardsContainer = document.querySelector('#boardsContainer');
+
+$(document).ready(function() {
+    // login button click event
+    $('#login').click(function() {
+        window.location.href = '/users/login';
+    });
+
+    // Register button click event
+    $('#signup').click(function() {
+        window.location.href = '/users/create';
+    });
+
+    // logout button click event
+    $('#logout').click(function() {
+        fetch('/users/logout', {
+            method: 'POST'
+        }).then((response) => {
+            if (response.ok) {
+                // if successfully logged out
+                window.location.href = '/main';
+            } else {
+                alert('Logout failed');
+            }
+        });
+    });
+
+    // Check user login status
+    fetch('/checklogin', {
+        method: 'GET'
+    }).then((response) => {
+        if (response.ok) {
+            // if session exists
+            $('#login').text('logout').attr('id', 'logout');
+        } else {
+            $('#logout').text('login').attr('id', 'login');
+        }
+    });
+
+    getBoards(); // first request when page loads
+});
 
 function getBoards() {
     fetch(`/api/main?lastBoardId=${lastBoardId}&limit=${limit}`)
@@ -22,7 +62,7 @@ function getBoards() {
 
                 let createdAt = document.createElement('div');
                 createdAt.className = 'createdAt';
-                let date = new Date(board.createdAt * 1000);  // 초 단위 UNIX 타임스탬프를 밀리초 단위로 변환
+                let date = new Date(board.createdAt * 1000); // convert a UNIX timestamp in seconds to milliseconds
                 createdAt.textContent = date.toLocaleDateString();
                 boardItem.appendChild(createdAt);
 
@@ -37,10 +77,8 @@ function getBoards() {
         });
 }
 
-window.onscroll = function () {
+window.onscroll = function() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         getBoards();
     }
 };
-
-getBoards(); // 페이지가 로드될 때 첫 번째 요청

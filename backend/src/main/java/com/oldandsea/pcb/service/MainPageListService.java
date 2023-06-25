@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,7 @@ public class MainPageListService {
 
     private final BoardRepositoryCustom boardRepositoryCustom;
 
+    @Transactional
     public Slice<BoardListDto> getAllBoards(Long lastBoardId, int limit) {
         PageRequest pageRequest = PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "boardId"));
         Slice<Board> boardsSlice = boardRepositoryCustom.searchAllBySlice(lastBoardId, pageRequest);

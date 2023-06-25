@@ -11,7 +11,19 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.main-header {
+    text-align: center;
+    margin-top: 60px;
+}
 
+.main-header-btn {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 /* 濡쒓퀬 �ㅽ��� */
 .main-titleBox {
     text-align: center;

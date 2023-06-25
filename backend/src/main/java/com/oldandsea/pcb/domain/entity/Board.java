@@ -59,6 +59,7 @@ public class Board {
         this.boardTagList = boardTagList;
     }
 
+
     public void updateBoard(String title, String content, List<BoardTag> boardTagList) {
         this.title = title;
         this.content = content;

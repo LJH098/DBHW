@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardCreateDto {
+
     private String title;
     private String content;
 
@@ -22,6 +23,7 @@ public class BoardCreateDto {
         return Board.builder()
                 .title(title)
                 .content(content)
+
                 .build();
     }
 //    private List<BoardTag> conversion(List<String> boardTagList){
@@ -34,7 +36,8 @@ public class BoardCreateDto {
 //                }
 
     @Builder
-    public BoardCreateDto (String title, String content) {
+    public BoardCreateDto (Long boardId,String title, String content) {
+
         this.title = title;
         this.content = content;
 

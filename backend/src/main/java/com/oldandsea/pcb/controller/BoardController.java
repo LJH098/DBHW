@@ -1,15 +1,15 @@
 package com.oldandsea.pcb.controller;
 
 import com.oldandsea.pcb.domain.dto.BoardCreateDto;
+import com.oldandsea.pcb.domain.dto.BoardResponseDto;
 import com.oldandsea.pcb.domain.repository.boardrepository.BoardRepository;
 import com.oldandsea.pcb.service.BoardCreateService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,17 +20,24 @@ import javax.servlet.http.HttpSession;
 public class BoardController {
     public final BoardCreateService boardCreateService;
 
-    @GetMapping()
-    public String viewCreateBoard(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if(session==null) {
-            return "redirect:/";
-        }
+    @GetMapping("/create")
+
+    public String viewCreateBoard() {
         return "write";
     }
-    @PostMapping()
-    public String createBoard(@RequestBody BoardCreateDto boardCreateDto) {
-       boardCreateService.createBoard(boardCreateDto);
-       return "redirect/main";
+    @PostMapping("/create")
+    @ResponseBody
+    public ResponseEntity<BoardResponseDto> createBoard(@RequestBody BoardCreateDto boardCreateDto, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if(session!=null) {
+            return ResponseEntity.ok(boardCreateService.createBoard(boardCreateDto));
+        }
+        else {
+            throw new IllegalArgumentException("맛있는 건 정말 참을 수 없어!");
+        }
+    }
+    @GetMapping("/view")
+    public String viewBoard() {
+        return "board";
     }
 }

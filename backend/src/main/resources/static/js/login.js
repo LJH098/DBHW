@@ -5,11 +5,12 @@ signupbtn.addEventListener("click", () => {
   location.href = "/users/create";
 });
 
-signinbtn.addEventListener("click", () => {
-  window.alert("로그인 성공");
-  goMain;
+signinbtn.addEventListener("click", (e) => {
+goMain(e)
 });
-
+function goToMain() {
+  window.location.href = '/main';
+}
 function goMain(e) {
   e.preventDefault();
 
@@ -26,15 +27,27 @@ function goMain(e) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(memberDto),
-  }).then((response) => {
-    if (response.ok) {
-      // 서버 응답이 200인 경우
-      console.log(response);
-    } else {
-      // 서버 응답이 200이 아닌 경우
-      throw new Error("Error: " + response.status);
-    }
-  });
+  })
+      .then((response) => {
+        if (response.ok) {
+          return fetch('/checklogin'); // Adding this line to make a GET request to /checklogin if login was successful
+        } else {
+          throw new Error("Error: " + response.status);
+        }
+      })
+      .then((response) => {
+        if (response.ok) {
+          // If checklogin is successful, redirect to main
+          window.location.href = '/main';
+        } else {
+          // If checklogin fails, redirect back to login
+          window.location.href = '/users/login';
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
 }
 
 
