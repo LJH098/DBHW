@@ -1,29 +1,29 @@
 #boardsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .boardItem {
-    flex: 0 0 8.18cm;  /* M1 맥북 16인치의 화면 크기에 따라 각 게시글 아이템의 너비를 결정. */
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    padding: 20px;
-    box-sizing: border-box;
+  flex: 0 0 8.18cm; /* M1 맥북 16인치의 화면 크기에 따라 각 게시글 아이템의 너비를 결정. */
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .boardItem .title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .boardItem .content {
-    font-size: 1em;
-    margin-bottom: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
 }
 
 .boardItem .createdAt {
-    font-size: 0.8em;
-    color: #888;
+  font-size: 0.8em;
+  color: #888;
 }

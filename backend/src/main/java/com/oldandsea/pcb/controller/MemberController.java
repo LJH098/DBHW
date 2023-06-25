@@ -61,7 +61,7 @@ public class MemberController {
             session.invalidate();
             return ResponseEntity.ok(("Logout success"));
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Please Login First");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Please Login Firstx");
         }
     }
 }

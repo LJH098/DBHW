@@ -2,7 +2,6 @@ const plusbtn = document.querySelector(".plusbtn");
 plusbtn.addEventListener("click", showInput);
 const hidden = document.querySelector(".hidden");
 function showInput() {
-  console.log("hi");
   hidden.style.display = "block";
   plusbtn.style.display = "none";
 }
@@ -13,7 +12,6 @@ const postit = document.querySelector(".postit-3");
 const opinion = document.querySelector(".opinion");
 const nickname = document.querySelector(".nickname");
 const content = document.querySelector(".inputContent");
-const inputnick = undefined;
 
 function completeWrite(e) {
   e.preventDefault();
@@ -21,5 +19,7 @@ function completeWrite(e) {
   plusbtn.style.display = "none";
   postit.style.display = "block";
   content.innerHTML = opinion.value;
-  nickname.innerText = inputnick;
 }
+
+const title = document.querySelector(".title");
+title.innerHTML = localStorage.getItem("title");

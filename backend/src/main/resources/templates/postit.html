@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pcb-postit</title>
-    <link rel="stylesheet" href="../static/css/postit.css" />
+    <link rel="stylesheet" href="/css/postit.css" />
   </head>
   <body>
     <nav>
@@ -15,11 +15,8 @@
     <form>
       <div class="container">
         <!-- 전부 임시데이터-->
-        <div class="tag">#A #Apple</div>
-        <div class="title">
-          Etiam nulla lectus amet nunc molestie at vulputate.
-        </div>
-        <div class="writer">홍길동</div>
+        <div class="title"></div>
+        <div class="writer">이진혁</div>
         <div class="content">
           <div class="postit-1">
             <div class="postit">
@@ -27,7 +24,7 @@
               vulputate pulvinar urna hendrerit. Cras ipsum lectus viverra diam
               lorem eu. Justo.
               <hr />
-              <div class="nickname">ddori</div>
+              <div class="nickname">이진혁</div>
               <div class="pluscomment">댓글 추가</div>
             </div>
             <div class="postit">
@@ -35,7 +32,7 @@
               vulputate pulvinar urna hendrerit. Cras ipsum lectus viverra diam
               lorem eu. Justo.
               <hr />
-              <div class="nickname">ddori</div>
+              <div class="nickname">이진혁</div>
               <div class="pluscomment">댓글 추가</div>
             </div>
             <div class="postit">
@@ -43,7 +40,7 @@
               vulputate pulvinar urna hendrerit. Cras ipsum lectus viverra diam
               lorem eu. Justo.
               <hr />
-              <div class="nickname">ddori</div>
+              <div class="nickname">이진혁</div>
               <div class="pluscomment">댓글 추가</div>
             </div>
           </div>
@@ -53,7 +50,7 @@
               vulputate pulvinar urna hendrerit. Cras ipsum lectus viverra diam
               lorem eu. Justo.
               <hr />
-              <div class="nickname">ddori</div>
+              <div class="nickname">이진혁</div>
               <div class="pluscomment">댓글 추가</div>
             </div>
             <div class="postit">
@@ -61,7 +58,7 @@
               vulputate pulvinar urna hendrerit. Cras ipsum lectus viverra diam
               lorem eu. Justo.
               <hr />
-              <div class="nickname">ddori</div>
+              <div class="nickname">이진혁</div>
               <div class="pluscomment">댓글 추가</div>
             </div>
             <div class="plusbtn">+</div>
@@ -72,13 +69,13 @@
             <div class="postit postit-3">
               <div class="inputContent"></div>
               <hr />
-              <div class="nickname"></div>
+              <div class="nickname">이진혁</div>
               <div class="pluscomment">댓글 추가</div>
             </div>
           </div>
         </div>
       </div>
     </form>
-    <script src="../static/js/postit.js"></script>
+    <script th:src="@{/js/postit.js}"></script>
   </body>
 </html>

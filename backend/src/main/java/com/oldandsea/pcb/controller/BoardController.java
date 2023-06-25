@@ -1,5 +1,6 @@
 package com.oldandsea.pcb.controller;
 
+import com.oldandsea.pcb.common.SessionConst;
 import com.oldandsea.pcb.domain.dto.BoardCreateDto;
 import com.oldandsea.pcb.domain.dto.BoardResponseDto;
 import com.oldandsea.pcb.domain.repository.boardrepository.BoardRepository;
@@ -30,12 +31,19 @@ public class BoardController {
     public ResponseEntity<BoardResponseDto> createBoard(@RequestBody BoardCreateDto boardCreateDto, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if(session!=null) {
-            return ResponseEntity.ok(boardCreateService.createBoard(boardCreateDto));
+            Long memberId = (Long) session.getAttribute(SessionConst.LOGIN_MEMBER);
+            if (memberId != null) {
+                return ResponseEntity.ok(boardCreateService.createBoard(boardCreateDto, memberId));
+            }
+            else {
+                throw new IllegalArgumentException("로그인을 해주세요!");
+            }
         }
         else {
             throw new IllegalArgumentException("맛있는 건 정말 참을 수 없어!");
         }
     }
+
     @GetMapping("/view")
     public String viewBoard() {
         return "board";

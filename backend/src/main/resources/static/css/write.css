@@ -51,11 +51,59 @@ textarea {
   margin-bottom: 20px;
 }
 
-.writebtn {
+button {
+  all: unset;
+  padding: 10px;
+  font-weight: bold;
+  color: gray;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: rgb(220, 220, 220);
+  cursor: pointer;
+}
+
+.container {
+  font-size: 15px;
+  color: gray;
+  width: 580px;
+}
+
+button:hover {
+  color: white;
+  background-color: rgb(48, 48, 255);
+}
+.clearfix {
+  text-align: center;
+}
+.clearfix button {
+  width: 260px;
+}
+
+.board-container div {
+  margin-bottom: 20px;
+}
+
+.board-content {
+  margin-top: 40px;
+}
+.board-tag {
+  color: rgb(49, 49, 255);
+}
+.board-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+.board-writer {
+  font-size: 13px;
+}
+.board-writebtn {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 80px;
 }
+
 button {
   all: unset;
   padding: 10px;
@@ -69,12 +117,12 @@ button {
   cursor: pointer;
 }
 
-.container {
+.board-container {
   font-size: 15px;
   color: gray;
+  width: 600px;
 }
 
-button:hover {
-  color: white;
-  background-color: rgb(48, 48, 255);
+.hidden {
+  display: none;
 }
