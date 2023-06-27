@@ -6,24 +6,18 @@ import com.oldandsea.pcb.domain.dto.response.BoardCreateResponseDto;
 import com.oldandsea.pcb.service.BoardCreateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/board")
 public class BoardController {
     public final BoardCreateService boardCreateService;
 
-    @GetMapping("/create")
-
-    public String viewCreateBoard() {
-        return "/write";
-    }
     @PostMapping("/create")
-    @ResponseBody
     public ResponseEntity<BoardCreateResponseDto> createBoard(@RequestBody BoardCreateRequestDto boardCreateDto, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if(session!=null) {
@@ -36,12 +30,8 @@ public class BoardController {
             }
         }
         else {
-            throw new IllegalArgumentException("맛있는 건 정말 참을 수 없어!");
+            throw new IllegalArgumentException("로그인을 하랑깨요!");
         }
     }
 
-    @GetMapping("/view")
-    public String viewBoard() {
-        return "board";
-    }
 }
