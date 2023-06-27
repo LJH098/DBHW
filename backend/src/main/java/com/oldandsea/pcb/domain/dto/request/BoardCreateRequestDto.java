@@ -1,25 +1,21 @@
-package com.oldandsea.pcb.domain.dto;
+package com.oldandsea.pcb.domain.dto.request;
 
 import com.oldandsea.pcb.domain.entity.Board;
-import com.oldandsea.pcb.domain.entity.BoardTag;
-import com.oldandsea.pcb.domain.entity.Tag;
+import com.oldandsea.pcb.domain.entity.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BoardCreateDto {
+public class BoardCreateRequestDto {
 
     private String title;
     private String content;
 
 
-    public Board toEntity() {
+    public Board toEntity(Member member) {
         return Board.builder()
                 .title(title)
                 .content(content)
@@ -36,7 +32,7 @@ public class BoardCreateDto {
 //                }
 
     @Builder
-    public BoardCreateDto (Long boardId,String title, String content) {
+    public BoardCreateRequestDto (Long boardId,String title, String content) {
 
         this.title = title;
         this.content = content;

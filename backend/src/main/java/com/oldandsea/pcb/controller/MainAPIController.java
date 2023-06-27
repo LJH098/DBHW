@@ -1,6 +1,7 @@
 package com.oldandsea.pcb.controller;
 
-import com.oldandsea.pcb.domain.dto.BoardListDto;
+
+import com.oldandsea.pcb.domain.dto.response.BoardListResponseDto;
 import com.oldandsea.pcb.service.MainPageListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Slice;
@@ -15,7 +16,7 @@ public class MainAPIController {
     private final MainPageListService mainPageListService;
 
     @GetMapping("/api/main")
-    public Slice<BoardListDto> getBoardList(
+    public Slice<BoardListResponseDto> getBoardList(
             @RequestParam(value = "lastBoardId", required = false) Long lastBoardId,
             @RequestParam(value = "limit",defaultValue = "10") int size) {
         return mainPageListService.getAllBoards(lastBoardId, size);

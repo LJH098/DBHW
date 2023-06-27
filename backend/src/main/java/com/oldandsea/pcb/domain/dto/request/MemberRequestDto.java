@@ -1,4 +1,4 @@
-package com.oldandsea.pcb.domain.dto;
+package com.oldandsea.pcb.domain.dto.request;
 
 
 import com.oldandsea.pcb.domain.entity.Member;
@@ -7,12 +7,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberDto {
+public class MemberRequestDto {
     private Long memberId;
 
     private String identification;
@@ -21,7 +19,7 @@ public class MemberDto {
 
     private String nickname;
     @Builder
-    public MemberDto(Long memberId, String identification, String pwd, String nickname) {
+    public MemberRequestDto(Long memberId, String identification, String pwd, String nickname) {
         this.memberId = memberId;
         this.identification = identification;
         this.pwd = pwd;

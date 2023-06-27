@@ -1,8 +1,9 @@
 package com.oldandsea.pcb.controller;
 
 import com.oldandsea.pcb.common.SessionConst;
-import com.oldandsea.pcb.domain.dto.MemberDto;
 
+import com.oldandsea.pcb.domain.dto.request.MemberRequestDto;
+import com.oldandsea.pcb.domain.dto.response.MemberResponseDto;
 import com.oldandsea.pcb.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,9 @@ public class MemberController {
 
     @PostMapping("/create")
     @ResponseBody
-    public ResponseEntity<String> insertMember(@RequestBody MemberDto memberDto) {
-        if (memberService.memberCheck(memberDto)) {
-            memberService.createMember(memberDto);
+    public ResponseEntity<String> insertMember(@RequestBody MemberRequestDto memberRequestDto) {
+        if (memberService.memberCheck(memberRequestDto)) {
+            memberService.createMember(memberRequestDto);
             return ResponseEntity.ok("Member created successfully");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Duplicate ID");
@@ -44,8 +45,8 @@ public class MemberController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<String> login(@RequestBody MemberDto memberDto, HttpSession session) {
-        MemberDto loginResult = memberService.login(memberDto);
+    public ResponseEntity<String> login(@RequestBody MemberRequestDto memberRequestDto, HttpSession session) {
+        MemberResponseDto loginResult = memberService.login(memberRequestDto);
         if(loginResult != null) {
             session.setAttribute(SessionConst.LOGIN_MEMBER,loginResult.getMemberId());
             return ResponseEntity.ok("Login Success");

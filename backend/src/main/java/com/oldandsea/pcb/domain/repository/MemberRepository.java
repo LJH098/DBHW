@@ -1,5 +1,4 @@
 package com.oldandsea.pcb.domain.repository;
-import com.oldandsea.pcb.domain.dto.MemberDto;
 import com.oldandsea.pcb.domain.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 

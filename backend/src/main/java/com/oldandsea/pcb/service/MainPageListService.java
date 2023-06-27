@@ -1,9 +1,10 @@
 package com.oldandsea.pcb.service;
 
-import com.oldandsea.pcb.domain.dto.BoardListDto;
+
+import com.oldandsea.pcb.domain.dto.response.BoardListResponseDto;
 import com.oldandsea.pcb.domain.entity.Board;
 import com.oldandsea.pcb.domain.repository.boardrepository.BoardRepositoryCustom;
-import com.oldandsea.pcb.domain.repository.boardrepository.BoardRepositoryImpl;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
@@ -24,13 +25,13 @@ public class MainPageListService {
     private final BoardRepositoryCustom boardRepositoryCustom;
 
     @Transactional
-    public Slice<BoardListDto> getAllBoards(Long lastBoardId, int limit) {
+    public Slice<BoardListResponseDto> getAllBoards(Long lastBoardId, int limit) {
         PageRequest pageRequest = PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "boardId"));
         Slice<Board> boardsSlice = boardRepositoryCustom.searchAllBySlice(lastBoardId, pageRequest);
 
-        List<BoardListDto> boardListDtos = boardsSlice.getContent().stream()
+        List<BoardListResponseDto> boardListResponseDto = boardsSlice.getContent().stream()
                 .map(board -> {
-                    return BoardListDto.builder()
+                    return BoardListResponseDto.builder()
                 .boardId(board.getBoardId())
                 .title(board.getTitle())
                 .content(board.getContent())
@@ -39,7 +40,7 @@ public class MainPageListService {
                 })
                 .collect(Collectors.toList());
 
-        return new SliceImpl<>(boardListDtos, pageRequest, boardsSlice.hasNext());
+        return new SliceImpl<>(boardListResponseDto, pageRequest, boardsSlice.hasNext());
 
     }
 

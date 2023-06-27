@@ -1,4 +1,4 @@
-package com.oldandsea.pcb.domain.dto;
+package com.oldandsea.pcb.domain.dto.response;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BoardResponseDto {
+public class BoardCreateResponseDto {
     private Long boardId;
     private String title;
     private String content;
     @Builder
-    public BoardResponseDto(Long boardId, String title, String content) {
+    public BoardCreateResponseDto(Long boardId, String title, String content) {
         this.boardId = boardId;
         this.title = title;
         this.content = content;

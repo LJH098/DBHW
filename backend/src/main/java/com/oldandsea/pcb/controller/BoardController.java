@@ -1,17 +1,13 @@
 package com.oldandsea.pcb.controller;
 
 import com.oldandsea.pcb.common.SessionConst;
-import com.oldandsea.pcb.domain.dto.BoardCreateDto;
-import com.oldandsea.pcb.domain.dto.BoardResponseDto;
-import com.oldandsea.pcb.domain.repository.boardrepository.BoardRepository;
+import com.oldandsea.pcb.domain.dto.request.BoardCreateRequestDto;
+import com.oldandsea.pcb.domain.dto.response.BoardCreateResponseDto;
 import com.oldandsea.pcb.service.BoardCreateService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -24,11 +20,11 @@ public class BoardController {
     @GetMapping("/create")
 
     public String viewCreateBoard() {
-        return "write";
+        return "/write";
     }
     @PostMapping("/create")
     @ResponseBody
-    public ResponseEntity<BoardResponseDto> createBoard(@RequestBody BoardCreateDto boardCreateDto, HttpServletRequest request) {
+    public ResponseEntity<BoardCreateResponseDto> createBoard(@RequestBody BoardCreateRequestDto boardCreateDto, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if(session!=null) {
             Long memberId = (Long) session.getAttribute(SessionConst.LOGIN_MEMBER);
